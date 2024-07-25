@@ -4,23 +4,25 @@ number_array = number_array.map{|number| number.to_i}
 
 
 def bubble_sort(array)
-sorted_array = number_array
-accumulator = 0
+sorted_array = array
+i = 1
 
-  (array.length - 1).times do |counter|
-    
+  (array.length - i).times do |counter|
+    accumulator = counter
     (array.length - accumulator).times do |iteration|
+      current_index = iteration
+      next_index = iteration + 1
       number = array[iteration]
       next_number = array[iteration+1]
-      if number > next_number
-        sorted_array[number] = sorted_array[next_number]  
-        sorted_array[next_number]= sorted_array[number]
+      if next_number.nil? || number.nil?
+        break
+      elsif number > next_number
+        sorted_array[current_index], sorted_array[next_index] = 
+        sorted_array[next_index], sorted_array[current_index]    
       end
       accumulator += 1
     end
-    if sorted_array = array.sort
-      break
-    end
+    i += 1
   end
   p sorted_array  
 end
